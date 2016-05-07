@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111214811) do
+ActiveRecord::Schema.define(version: 20160507031715) do
+
+  create_table "images", force: :cascade do |t|
+    t.text     "url"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "images", ["post_id"], name: "index_images_on_post_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -23,6 +39,23 @@ ActiveRecord::Schema.define(version: 20141111214811) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "heading"
+    t.text     "body"
+    t.decimal  "price"
+    t.string   "neighborhood"
+    t.string   "external_url"
+    t.integer  "bedrooms"
+    t.decimal  "bathrooms"
+    t.integer  "sqft"
+    t.string   "cats"
+    t.string   "dogs"
+    t.string   "w_d_in_unit"
+    t.string   "street_parking"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -48,6 +81,7 @@ ActiveRecord::Schema.define(version: 20141111214811) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

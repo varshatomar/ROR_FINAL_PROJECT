@@ -3,6 +3,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <div class= "containerlogin" >
     <%= form_for(:session, url: login_path) do |f| %>
       
       <%= f.label :email %>
@@ -22,4 +23,5 @@
     
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
+</div>
 </div>
