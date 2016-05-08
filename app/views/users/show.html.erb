@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= image_tag(@user.image_url, :width => 600) if @user.image.present? %>
+        <%= image_tag(@user.image_url, :width => 400) if @user.image.present? %>
         <%= @user.name %>
       </h1>
    <h3>Listings (<%= @user.posts.count %>)</h3>

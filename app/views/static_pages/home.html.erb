@@ -1,34 +1,30 @@
-<% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-      <section class="micropost_form">
-        <%= render 'shared/micropost_form' %>
-      </section>
-    </aside>
-    <div class="col-md-8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
+<% provide(:title, "Dashboard") %>
+<h1>Dashboard</h1>
+<p>
+<div id="container">
+<div id="text1" style="position:absolute; overflow:hidden; left:396px; top:5px; width:435px; height:56px; z-index:1">
+<div class="wpmd">
+<div align=center><font color="#FFFFFF" class="ws20"><B>Dashboardfor user experience</B></font></div>
+<br>
+<div align=center><font color="#FFFF00" class="ws14"></font></div>
+</div></div>
+
+<div id="roundrect2" style="position:absolute; overflow:hidden; left:564px; top:122px; width:535px; height:477px; z-index:2"><img border=0 width="100%" height="100%" alt="" src="images/roundrect531015515.gif"></div>
+
+<div id="image1" style="position:absolute; overflow:hidden; left:578px; top:159px; width:505px; height:419px; z-index:3">
+  <img src="images/ApartmentSearch.jpg" alt="" title="" border=0 width=505 height=419></div>
+
+<div id="text3" style="position:absolute; overflow:hidden; left:628px; top:125px; width:402px; height:33px; z-index:4">
+<div class="wpmd">
+<div><font color="#FF0000" class="ws18"><B>Top Search Apartments - May 2016</B></font></div>
+</div></div>
+
+<div id="text2" style="position:absolute; overflow:hidden; left:53px; top:126px; width:454px; height:90px; z-index:5">
+<div class="wpmd">
+<div><font color="#FF0000" class="ws18"><B>Top Rated Apartments - May 2016</B></font></div>
+</div></div>
+
+<div id="image2" style="position:absolute; overflow:hidden; left:39px; top:171px; width:490px; height:412px; z-index:6">
+  <img src="images/TopRating.jpg" alt="" title="" border=0 width=490 height=412></div>
   </div>
-<% else %>
-  <div class="center jumbotron">
-    <h1>Welcome to the Sample App</h1>
-    
-    <h2>
-      This is the home page for the 
-      <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-      sample application.
-    </h2>
-    
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>  
-  </div>
-  
-  <%= link_to image_tag("rails.png", alt: "Rails logo"),
-              'http://rubyonrails.org' %>
-<% end %>
+</p>
