@@ -4,18 +4,18 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-   # @posts = Post.order('timestamp DESC').paginate(:page => params[:page], :per_page => 30)
-    @posts = Post.where("bedrooms" => 100) if params["bedrooms"].present?
-   # @posts = @posts.where(bathrooms: params["bathrooms"]) if params["bathrooms"].present?
-    #@posts = @posts.where(neighborhood: params["neighborhood"]) if params["neighborhood"].present?
-   # @posts = @posts.where("price > ?", params["min_price"]) if params["min_price"].present?
-   #@posts = @posts.where("price < ?", params["max_price"]) if params["max_price"].present?
-    #@posts = @posts.where("sqft > ?", params["min_sqft"]) if params["min_sqft"].present?
-    #@posts = @posts.where("sqft < ?", params["max_sqft"]) if params["max_sqft"].present?
-    #@posts = @posts.where(cats: params["cats"]) if params["cats"].present?
-    #@posts = @posts.where(dogs: params["dogs"]) if params["dogs"].present?
-    #@posts = @posts.where(w_d_in_unit: params["w_d_in_unit"]) if params["w_d_in_unit"].present?
-    #@posts = @posts.where(street_parking: params["street_parking"]) if params["street_parking"].present?
+    @posts = Post.order('updated_at DESC').paginate(:page => params[:page], :per_page => 5)
+    @posts = @posts.where(bedrooms: params["bedrooms"]) if params["bedrooms"].present?
+    @posts = @posts.where(bathrooms: params["bathrooms"]) if params["bathrooms"].present?
+    @posts = @posts.where(neighborhood: params["neighborhood"]) if params["neighborhood"].present?
+    @posts = @posts.where("price > ?", params["min_price"]) if params["min_price"].present?
+    @posts = @posts.where("price < ?", params["max_price"]) if params["max_price"].present?
+    @posts = @posts.where("sqft > ?", params["min_sqft"]) if params["min_sqft"].present?
+    @posts = @posts.where("sqft < ?", params["max_sqft"]) if params["max_sqft"].present?
+    @posts = @posts.where(cats: params["cats"]) if params["cats"].present?
+    @posts = @posts.where(dogs: params["dogs"]) if params["dogs"].present?
+    @posts = @posts.where(w_d_in_unit: params["w_d_in_unit"]) if params["w_d_in_unit"].present?
+    @posts = @posts.where(street_parking: params["street_parking"]) if params["street_parking"].present?
   end
 
   # GET /posts/1

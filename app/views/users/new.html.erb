@@ -18,8 +18,8 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       <br>
-      <%= f.file_field :photo, id:"something_else_unique" %>
-      <%= image_tag @post.photo, id:"something_unique"%>
+      <%= f.file_field :image, id:"something_else_unique" %>
+      <%= image_tag @user.image, id:"something_unique"%>
       <br>
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

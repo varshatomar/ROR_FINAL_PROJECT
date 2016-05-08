@@ -2,10 +2,11 @@
   
   <%= render 'filter' %>
   
-  <% if @posts.nil? %>
+  <% if @posts.empty? %>
     <hr>
     <h3>No results found</h3>
   <% else %>  
+    <%= will_paginate %>
     <table class="table table-hover table-condensed">
       <thead>
         <tr>
@@ -24,12 +25,14 @@
           <tr>
             <td width="13%" height="120px">
               <%= link_to post_path(post) do %>
-                
+                <% if post.photo.nil? %>
+                  <%= image_tag "http://www.eastbaymodern.com/idx/img/no-image.gif", class: "thumbnail" %>
+                <% else %>
                   <%= image_tag post.photo_url, class: "thumbnail" %>
-                
+                <% end %>
               <% end %>
             </td>
-            <td style="vertical-align:middle"><%= link_to post.heading, post %></td>
+            <td class="center" style="vertical-align:middle"><%= link_to post.heading, post %></td>
             <td class="center" style="vertical-align:middle"><%= number_to_currency(post.price, precision: 0) %></td>
             <td class="center" style="vertical-align:middle"><%= post.bedrooms %></td>
             <td class="center" style="vertical-align:middle"><%= post.bathrooms %></td>
@@ -40,6 +43,6 @@
       </tbody>
     </table>
     
-  
+    <%= will_paginate %>
   <% end %>
 </div>
