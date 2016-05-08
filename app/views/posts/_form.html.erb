@@ -1,4 +1,4 @@
-<%= form_for(@post) do |f| %>
+ <%= form_for @post, :html => {:multipart => true} do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -31,7 +31,59 @@
     <%= f.label :external_url %><br>
     <%= f.text_field :external_url %>
   </div>
+   <div class="field">
+    <%= f.label :Bedrooms %><br>
+    <%= f.text_field :bedrooms %>
+  </div>
+  <div class="field">
+    <%= f.label :Bathrooms %><br>
+    <%= f.text_field :bathrooms %>
+  </div>
+  <div class="field">
+    <%= f.label :Sqft %><br>
+    <%= f.text_field :sqft %>
+  </div>
+  <div class="field">
+    <%= f.label :cats %>
+    <%= f.check_box :cats %>
+  </div>
+  <div class="field">
+    <%= f.label :dogs%>
+    <%= f.check_box :dogs%>
+  </div>
+  <div class="field">
+    <%= f.label "Washer/dryer in unit" %>
+    <%= f.check_box :w_d_in_unit %>
+  </div>
+  <div class="field">
+    <%= f.label "street parking" %>
+    <%= f.check_box :street_parking %>
+  </div>
+  <br>
+      <%= f.file_field :photo, id:"something_else_unique" %>
+      <%= image_tag @post.photo, id:"something_unique"%>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+      f=files[0]
+      // Only process image files.
+      if (f.type.match('image.*')) {
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+          return function(e) {
+            // alert(e.target.result);
+            document.getElementById("something_unique").src=e.target.result;
+          };
+        })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+      }
+    }
+  document.getElementById('something_else_unique').addEventListener('change', handleFileSelect, false);
+</script>

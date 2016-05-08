@@ -24,11 +24,9 @@
           <tr>
             <td width="13%" height="120px">
               <%= link_to post_path(post) do %>
-                <% if post.images.empty? %>
-                  <%= image_tag "http://www.eastbaymodern.com/idx/img/no-image.gif", class: "thumbnail" %>
-                <% else %>
-                  <%= image_tag post.images.first.url, class: "thumbnail" %>
-                <% end %>
+                
+                  <%= image_tag post.photo_url, class: "thumbnail" %>
+                
               <% end %>
             </td>
             <td style="vertical-align:middle"><%= link_to post.heading, post %></td>
@@ -36,12 +34,12 @@
             <td class="center" style="vertical-align:middle"><%= post.bedrooms %></td>
             <td class="center" style="vertical-align:middle"><%= post.bathrooms %></td>
             <td class="center" style="vertical-align:middle"><%= post.neighborhood %></td>
-            <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(post.timestamp.to_i))} ago" %></td>
+            <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(post.updated_at.to_i))} ago" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     
-    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+  
   <% end %>
 </div>

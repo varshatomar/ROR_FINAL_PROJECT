@@ -13,20 +13,16 @@
   
   <div class="row">
     <div class="col-md-7" id="post-images">
-      <% if @images.blank? %>
-        <%= image_tag "http://www.eastbaymodern.com/idx/img/no-image.gif", class: "thumbnail" %>
-      <% else %>
-        <% @images.each do |image| %>
-          <%= image_tag image.url, class: "thumbnail" %>
-        <% end %>
-      <% end %>
+     
+         <%= image_tag(@post.photo_url, :width => 600) if @post.photo.present? %>
+     
     </div>
     
     <div class="col-md-5">
       <div class="basic-info">
         <h4>Basic Info</h4>
         Price: <%= number_to_currency(@post.price, precision: 0) %><br>
-        Last Updated: <%= "#{time_ago_in_words(Time.at(@post.timestamp.to_i))} ago" %><br>
+        Last Updated: <%= "#{time_ago_in_words(Time.at(@post.updated_at.to_i))} ago" %><br>
         
         <% if @post.neighborhood.present? %>
           Neighborhood: <%= @post.neighborhood %><br>
